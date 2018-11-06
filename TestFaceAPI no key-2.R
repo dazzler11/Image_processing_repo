@@ -5,12 +5,12 @@ Sys.setenv(kairos_key = "2fbe4aff872a47fce1b359436f92d6ef")
 library(facerec)
 #You only need to call facerec_init() once after loading the package.
 facerec_init()
-
+library(EBImage)
 finn_image <- 'https://upload.wikimedia.org/wikipedia/en/2/2a/Finn-Force_Awakens_%282015%29.png'
 #finn_image<-readImage("C:/Users/Baryons/Downloads/43080750_1945736615516340_5157512925082025984_n.jpg")1
 finn_face <- detect(image = finn_image)
-#display(finn_image)
-#plot(finn_image)
+display(finn_image)
+plot(finn_image)
 
 library(magick)
 library(ggplot2)

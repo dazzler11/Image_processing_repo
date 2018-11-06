@@ -56,6 +56,7 @@ gcs_get_bucket("https://oauth2.googleapis.com/token")
 #Here is a photo of our dog when we hiked up to Audubon Peak in Colorado:)
 us_label = getGoogleVisionResponse(file.choose(),feature = 'LABEL_DETECTION')
 head(us_label)
+head(us_label$score)
 
 #Landmark Detection: (This is a feature designed to specifically pick out a recognizable landmark! It provides the position in the image along with the geolocation of the landmark (in longitude and latitude).)
 us_castle <- readImage(file.choose())
@@ -86,20 +87,28 @@ m = leaflet() %>%
   addMarkers(lng = lon, lat = latt)
 m
 
-#Face Detection:
-us_hats = getGoogleVisionResponse(file.choose(),
-                                  feature = 'FACE_DETECTION')
-head(us_hats)
-xs1 = us_hats$fdBoundingPoly$vertices[[1]][1][[1]]
-ys1 = us_hats$fdBoundingPoly$vertices[[1]][2][[1]]
 
-xs2 = us_hats$fdBoundingPoly$vertices[[2]][1][[1]]
-ys2 = us_hats$fdBoundingPoly$vertices[[2]][2][[1]]
+#Face Detection:
+my_face = getGoogleVisionResponse(file.choose(),
+                                  feature = 'FACE_DETECTION')
+head(my_face)
+xs1 = my_face$fdBoundingPoly$vertices[[1]][1][[1]]
+ys1 = my_face$fdBoundingPoly$vertices[[1]][2][[1]]
+
+xs2 = my_face$fdBoundingPoly$vertices[[2]][1][[1]]
+ys2 = my_face$fdBoundingPoly$vertices[[2]][2][[1]]
 
 polygon(x=xs1,y=ys1,border='red',lwd=4)
 polygon(x=xs2,y=ys2,border='green',lwd=4)
 
+
 #Here’s a shot that should be familiar (copied directly from my last blog) – and I wanted to highlight the different features that can be detected. Look at how many points are perfectly placed:
 head(us_hats$landmarks)
 
+
+#Logo Detection:
+#To continue along the Chicago trip, we drove by Wrigley field and I took a really bad photo of the sign from a moving car as it was under construction. It’s nice because it has a lot of different lines and writing the Toyota logo isn’t incredibly prominent or necessarily fit to brand colors.
+us_logo = getGoogleVisionResponse(file.choose(),
+                                      feature = 'LOGO_DETECTION')
+head(us_logo)
 
