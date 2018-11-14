@@ -73,13 +73,13 @@ my_face = getGoogleVisionResponse(file.choose(),
                                   feature = 'FACE_DETECTION')
 head(my_face)
 xs1 = my_face$fdBoundingPoly$vertices[[1]][1][[1]]
-ys1 = my_face$fdBoundingPoly$vertices[[1]][2][[1]]
+ys1 = (x=xs2,y=ys2,border='green',lwd=4)my_face$fdBoundingPoly$vertices[[1]][2][[1]]
 
 xs2 = my_face$fdBoundingPoly$vertices[[2]][1][[1]]
 ys2 = my_face$fdBoundingPoly$vertices[[2]][2][[1]]
 
 polygon(x=xs1,y=ys1,border='red',lwd=4)
-polygon(x=xs2,y=ys2,border='green',lwd=4)
+polygon
 
 #Here’s a shot that should be familiar (copied directly from my last blog) – and I wanted to highlight the different features that can be detected. Look at how many points are perfectly placed:
 head(us_hats$landmarks)
