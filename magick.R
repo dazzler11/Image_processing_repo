@@ -15,6 +15,7 @@ print(tiger)
 library(rsvg)
 remove.packages("rsvg")
 install.packages("rsvg")
+library(rsvg)
 
 #We use image_write to export an image in any format to a file on disk, or in memory if path = NULL.
 #Render svg to png bitmap.
